@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+                <li><a href="#educacion" class="nav-link">Educación</a></li>
+                <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="sobre-mi" class="reveal">
+            <h2>Sobre Mí</h2>
+            <div class="content">
+                <p>¡Hola! Soy un profesional apasionado por [tu especialidad]. Me especializo en [tus áreas de experiencia] y busco constantemente nuevos desafíos para crecer profesionalmente.</p>
+            </div>
+        </section>
+
+        <section id="educacion" class="reveal">
+            <h2>Educación</h2>
+            <div class="education-cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Título Universitario</h3>
+                        <p class="institution">Universidad</p>
+                        <p class="year">2020 - 2024</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Certificación</h3>
+                        <p class="institution">Instituto</p>
+                        <p class="year">2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades" class="reveal">
+            <h2>Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill"><span>HTML</span></div>
+                <div class="skill"><span>CSS</span></div>
+                <div class="skill"><span>JavaScript</span></div>
+                <div class="skill"><span>React</span></div>
+                <div class="skill"><span>Node.js</span></div>
+                <div class="skill"><span>Git</span></div>
+            </div>
+        </section>
+
+        <section id="contacto" class="reveal">
+            <h2>Contacto</h2>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="Nombre" required class="input-glow">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required class="input-glow">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Mensaje" required class="input-glow"></textarea>
+                </div>
+                <button type="submit" class="btn-glow">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mi Portafolio. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Configuración de particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#6366f1' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#6366f1',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Animación de scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Efecto smooth scroll para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
